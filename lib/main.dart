@@ -218,11 +218,18 @@ class _MusicPageState extends State<MusicPage> {
                   ),
                 ],
               ),
-              child: Image.asset(
-                _audioImages[_currentTrackIndex],
-                height: 200,
-                width: 200,
-                fit: BoxFit.cover,
+              child: AnimatedSwitcher(
+                duration: const Duration(seconds: 3),
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  return FadeTransition(opacity: animation, child: child);
+                },
+                child: Image.asset(
+                  _audioImages[_currentTrackIndex],
+                  key: ValueKey<String>(_audioImages[_currentTrackIndex]),
+                  height: 200,
+                  width: 200,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             const SizedBox(height: 30),
