@@ -219,7 +219,7 @@ class _MusicPageState extends State<MusicPage> {
                 ],
               ),
               child: AnimatedSwitcher(
-                duration: const Duration(seconds: 3),
+                duration: const Duration(seconds: 1),
                 transitionBuilder: (Widget child, Animation<double> animation) {
                   return FadeTransition(opacity: animation, child: child);
                 },
