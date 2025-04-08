@@ -262,43 +262,40 @@ class _MusicPageState extends State<MusicPage> {
                     'Playback Position',
                     style: const TextStyle(fontSize: 18, color: Colors.white),
                   ),
-                  if (_duration > Duration.zero)
-                    Column(
-                      children: [
-                        Slider(
-                          value: _currentPosition.inSeconds.toDouble(),
-                          min: 0.0,
-                          max: _duration.inSeconds.toDouble(),
-                          divisions:
-                              _duration.inSeconds > 0
-                                  ? _duration.inSeconds
-                                  : null,
-                          activeColor: Colors.white,
-                          inactiveColor: Colors.grey,
-                          onChanged: (value) {
-                            setState(() {
-                              _currentPosition = Duration(
-                                seconds: value.round(),
-                              );
-                              musicPlayer.seek(_currentPosition);
-                            });
-                          },
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              _currentPosition.toString().split('.').first,
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                            Text(
-                              _duration.toString().split('.').first,
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                  Column(
+                    children: [
+                      Slider(
+                        value: _currentPosition.inSeconds.toDouble(),
+                        min: 0.0,
+                        max: _duration.inSeconds.toDouble(),
+                        divisions:
+                            _duration.inSeconds > 0
+                                ? _duration.inSeconds
+                                : null,
+                        activeColor: Colors.white,
+                        inactiveColor: Colors.grey,
+                        onChanged: (value) {
+                          setState(() {
+                            _currentPosition = Duration(seconds: value.round());
+                            musicPlayer.seek(_currentPosition);
+                          });
+                        },
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            _currentPosition.toString().split('.').first,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            _duration.toString().split('.').first,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
